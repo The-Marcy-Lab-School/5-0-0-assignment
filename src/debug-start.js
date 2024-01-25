@@ -6,7 +6,7 @@ const charInserter = (char) => {
 };
 
 const insertCharsToWords = (words, char, inserterFunc) => {
-  return words.split(' ').map(inserterFunc(char)).join(' ');
+  return words.split(' ').map().join(' ');
 };
 
 module.exports = {

@@ -10,7 +10,7 @@ const testSuiteName = 'From Scratch Tests';
 const scoresDir = path.join(__dirname, '..', 'scores');
 const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
-const log = jest.spyOn(console, 'log').mockImplementation(() => {});
+const log = jest.spyOn(console, 'log').mockImplementation(() => { });
 
 describe(testSuiteName, () => {
   afterEach(() => {
@@ -55,8 +55,8 @@ describe(testSuiteName, () => {
   });
 
   it('sumOfMultiples - returns the sum of all multiples', () => {
-    expect(sumOfMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)).toBe(18);
-    expect(sumOfMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)).toBe(20);
+    expect(sumOfMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)).toBe(18); // 3 + 6 + 9 === 18
+    expect(sumOfMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)).toBe(20); // 2 + 4 + 6 + 8 === 20
     expect(sumOfMultiples([9, 9, 9], 9)).toBe(27);
     expect(sumOfMultiples([1, 4, 3], 1)).toBe(8);
     expect(sumOfMultiples([1, 4, 1, 3, 13], 2)).toBe(4);
@@ -98,7 +98,7 @@ describe(testSuiteName, () => {
 
   it('makeFriendList.addFriend - adds a friend to the friends array and returns the new length of the array', () => {
     const friendDataObj = makeFriendList();
-    const bob = 'Bob';
+    const bob = 'Bob'; // storing strings in variables to avoid typos
     expect(friendDataObj.addFriend(bob)).toBe(1);
     expect(friendDataObj.getFriends()).toEqual([bob]);
 
