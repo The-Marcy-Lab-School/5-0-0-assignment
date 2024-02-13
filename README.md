@@ -1,5 +1,5 @@
-# Problem Set 4.0 - Closures
-- [Problem Set 4.0 - Closures](#problem-set-40---closures)
+# Closures
+- [Closures](#closures)
   - [Before You Begin](#before-you-begin)
     - [More tests, less prompts](#more-tests-less-prompts)
     - [Tickets](#tickets)
