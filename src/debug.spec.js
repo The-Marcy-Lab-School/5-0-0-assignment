@@ -1,8 +1,7 @@
 const path = require('path');
 const ScoreCounter = require('score-tests'); // eslint-disable-line import/no-extraneous-dependencies
 const {
-  charInserter,
-  insertCharsToWords,
+  createCourse,
 } = require('./debug');
 
 const testSuiteName = 'Debug Tests';
@@ -10,42 +9,50 @@ const scoresDir = path.join(__dirname, '..', 'scores');
 const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 describe(testSuiteName, () => {
-  it('insertCharsToWords - takes a string of words, a joining character, and the inserter function and returns the words with the inserted character', () => {
-    expect(insertCharsToWords('Hello there!', '-', charInserter)).toBe('H-e-l-l-o t-h-e-r-e-!');
+  it('createCourse - creates an object for managing a course', () => {
 
-    expect(insertCharsToWords('Hey, you good?', '0', charInserter)).toBe('H0e0y0, y0o0u g0o0o0d0?');
+    const topic = 'computer science';
+    const instructor = 'ada lovelace'
+    const course = createCourse(topic, instructor);
 
-    expect(insertCharsToWords('Batman!', '?', charInserter)).toBe('B?a?t?m?a?n?!');
+    // basic properties are added
+    expect(course.topic).toBe(topic);
+    expect(course.instructor).toBe(instructor);
 
-    expect(insertCharsToWords('a b c d e', '?', charInserter)).toBe('a b c d e');
+    // can add students and get updated students list
+    course.addStudent('zo')
+    course.addStudent('carmen')
+    expect(course.getStudents()).toEqual(['zo', 'carmen'])
+
+    // can remove students and get updated students list
+    course.removeStudent('carmen')
+    expect(course.getStudents()).toEqual(['zo'])
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('charInserter - calls the provided inserterFunc with the provided char argument at some point in the function', () => {
-    // A "Spy" simply allows jest to monitor a method and see if/what it was called with.
-    const spyWrapper = require('./debug'); // eslint-disable-line global-require
-    const spiedInserter = jest.spyOn(spyWrapper, 'charInserter');
+  it('createCourse - keeps the students array private using closure', () => {
 
-    expect(insertCharsToWords('Okay cool.', '%', spiedInserter)).toBe('O%k%a%y c%o%o%l%.');
-    expect(spiedInserter).toHaveBeenCalledWith('%');
+    const topic = 'computer science';
+    const instructor = 'ada lovelace'
+    const course = createCourse(topic, instructor);
 
-    scoreCounter.correct(expect); // DO NOT TOUCH
-  });
+    // students is not a property that can be directly accessed
+    expect(course.students).toBe(undefined);
 
-  it('charInserter - was NOT touched. It takes a character and returns a function that takes a word and inserts the original character between each value', () => {
-    const dashInserter = charInserter('-');
-    expect(dashInserter('hi')).toBe('h-i');
-    expect(dashInserter('wow')).toBe('w-o-w');
-    expect(dashInserter('100')).toBe('1-0-0');
+    // adding students for the next test
+    course.addStudent('zo')
+    course.addStudent('carmen')
+    const students = course.getStudents()
+    students.push('ben'); // if this is a copy, the original will not be affected
 
-    const spaceInserter = charInserter(' ');
-    expect(spaceInserter('alright')).toBe('a l r i g h t');
-    expect(spaceInserter('neat')).toBe('n e a t');
-    expect(spaceInserter('HEY')).toBe('H E Y');
+    // getStudents returns a copy, not the original array
+    expect(course.getStudents()).toEqual(['zo', 'carmen'])
 
-    // copied test to prevent auto pass
-    expect(insertCharsToWords('Hello there!', '-', charInserter)).toBe('H-e-l-l-o t-h-e-r-e-!');
+    const otherCourse = createCourse('english', 'maya');
+
+    // each course has its own students array
+    expect(otherCourse.getStudents() !== course.getStudents()).toBeTruthy()
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });

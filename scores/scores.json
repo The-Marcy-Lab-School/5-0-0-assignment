@@ -19,8 +19,8 @@
     "FrScTe17": "From Scratch Tests makeFriendList.displayFriends - logs a message with proper oxford comma, and correct use of \"and\"",
     "FrScTe18": "From Scratch Tests makeFriendList - does not expose internal friends array",
     "FrScTe19": "From Scratch Tests makeFriendList - is not possible to manipulate the internal friends array from outside the object",
-    "DeTe1": "Debug Tests insertCharsToWords - takes a string of words, a joining character, and the inserter function and returns the words with the inserted character",
-    "DeTe2": "Debug Tests charInserter - calls the provided inserterFunc with the provided char argument at some point in the function",
+    "DeTe1": "Debug Tests createCourse - creates an object for managing a course",
+    "DeTe2": "Debug Tests createCourse - keeps the students array private using closure",
     "DeTe3": "Debug Tests charInserter - was NOT touched. It takes a character and returns a function that takes a word and inserts the original character between each value"
   },
   "testNameToIdHash": {
@@ -45,7 +45,9 @@
     "From Scratch Tests makeFriendList - is not possible to manipulate the internal friends array from outside the object": "FrScTe19",
     "Debug Tests insertCharsToWords - takes a string of words, a joining character, and the inserter function and returns the words with the inserted character": "DeTe1",
     "Debug Tests charInserter - calls the provided inserterFunc with the provided char argument at some point in the function": "DeTe2",
-    "Debug Tests charInserter - was NOT touched. It takes a character and returns a function that takes a word and inserts the original character between each value": "DeTe3"
+    "Debug Tests charInserter - was NOT touched. It takes a character and returns a function that takes a word and inserts the original character between each value": "DeTe3",
+    "Debug Tests createCourse - creates an object for managing a course": "DeTe1",
+    "Debug Tests createCourse - keeps the students array private using closure": "DeTe2"
   },
   "testScores": {
     "From Scratch Tests": {
@@ -70,14 +72,13 @@
       "FrScTe19": 0
     },
     "Debug Tests": {
-      "DeTe1": 0,
-      "DeTe2": 0,
-      "DeTe3": 0
+      "DeTe1": 1,
+      "DeTe2": 0
     }
   },
   "humanReadable": {
     "From Scratch Tests": "0/19",
-    "finalTestScore": "FINAL SCORE: 0/22",
-    "Debug Tests": "0/3"
+    "finalTestScore": "FINAL SCORE: 1/21",
+    "Debug Tests": "1/2"
   }
 }
