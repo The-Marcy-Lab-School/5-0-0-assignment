@@ -1,16 +1,14 @@
-# Closures
-- [Closures](#closures)
-  - [Before You Begin](#before-you-begin)
-    - [More tests, less prompts](#more-tests-less-prompts)
-    - [Tickets](#tickets)
-    - [Short answers](#short-answers)
-  - [Off you go!](#off-you-go)
+# Problem Set 4.0 - Closures
+- [Before You Begin](#before-you-begin)
+  - [More tests, less prompts](#more-tests-less-prompts)
+  - [Tickets](#tickets)
+- [Off you go!](#off-you-go)
+- [Short Answers](#short-answers)
 - [Question 1: makeIdFunc](#question-1-makeidfunc)
 - [Question 2: sumOfMultiples](#question-2-sumofmultiples)
 - [Question 3: makeFriendList](#question-3-makefriendlist)
-- [Short Answers](#short-answers-1)
-- [Bug Tickets](#bug-tickets)
-  - [Good luck!](#good-luck)
+- [Debug Tickets](#debug-tickets)
+- [Good luck!](#good-luck)
 
 ## Before You Begin
 Welcome to Mod 5, Object-Oriented Programming (OOP)! To kick us off, this assignment is all about closures! But you may notice something's a little different about this assignment: it's so short! Where are the prompts??
@@ -35,22 +33,22 @@ Your job is to use the tickets and tests to get the functions back to working or
 ## Off you go!
 Make sure you run `npm install` after you pull down your assignment, and run `npm test` at before pushing up your code.
 
-# Short Answers
+## Short Answers
 There are a few we'd like you to answer, you may have to google some things. Be sure you understand the concepts, don't just spit out a reworded ChatGPT response, ok? Check your grammar!
 
-# Question 1: makeIdFunc
+## Question 1: makeIdFunc
 This function should use a closure to return a function. 
 * The returned should return a different integer each time starting at `1` and incrementing each time it is invoked. 
 * This kind of function is used to generate unique number IDs for things.
 
 This is a *classic* closure example, check the tests for what we're expecting. And if you need a hint, check out this [article on closures from W3](https://www.w3schools.com/js/js_function_closures.asp).
 
-# Question 2: sumOfMultiples
+## Question 2: sumOfMultiples
 Let's get some `.reduce` practice. 
 
 Write a function that returns the sum of all numbers that are multiples of the given argument. (Seriously, no `for` loops, use `.reduce` with the power of *closures*)
 
-# Question 3: makeFriendList
+## Question 3: makeFriendList
 Ok, this is a fun one. Write a "factory" function called `makeFriendList`. 
 * It should return an object
 * It should use closure to encapsulate a private `friends` array of names (strings)
@@ -68,25 +66,25 @@ The methods we need are:
 
 What should they return? What args do they take? Check those tests!
 
-# Bug Tickets
+## Debug Tickets
 
-| Ticket | Name |
-|--------|-----|
-|DBG-312 | Fix broken insertCharsToWords please |
-|**Description** | We were looking at the API yesterday to prep for the deploy and it looks like we somehow broke the `insertCharsToWords` function. Please restore functionality ASAP so we can deploy. This is a blocker! |
-| **priority** | High |
-| **Status** | Open |
-| **Assignee** | YOU! |
+| Ticket          | Name                                                                                                                                                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DBG-312         | Fix broken createCourse please                                                                                                                                                                                      |
+| **Description** | We were looking at the API yesterday to prep for the deploy and it looks like we've exposed the student data in the `createCourse` function. Please restore functionality ASAP so we can deploy. This is a blocker! |
+| **priority**    | High                                                                                                                                                                                                                |
+| **Status**      | Open                                                                                                                                                                                                                |
+| **Assignee**    | YOU!                                                                                                                                                                                                                |
 
 And then the comments would look something like:
 
-| Commenter | Message |
-|-----------|---------|
-| Dean SE2  | Just checked into it, one of the new devs blew away changes with a rebase. It looks like we're missing the callback inside `.map` |
-| Jane SE3 | Yea, but the inserter function itself is fine. So whoever fixes this please don't change the inserter function code, just use it correctly. |
-| Jo SE2 | There's actually already tests for the inserter function so it should be fine. |
-| Jane SE3 | Ah perfect. Can someone pick this up? |
-| **YOU** | On it! |
+| Commenter | Message                                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------------------- |
+| Dean SE2  | Just checked into it, one of the new devs blew away changes with a rebase. It looks like the closure was removed |
+| Jane SE3  | Yeah, it looks like the rest of the function logic is mostly okay though.                                        |
+| Jo SE2    | They are passing most of the tests for functionality but they are failing the tests for privacy.                 |
+| Jane SE3  | Ah gotcha. Can someone pick this up?                                                                             |
+| **YOU**   | On it!                                                                                                           |
 
 Notice how there's a little too much info? Getting good at reading tickets is filtering out the less important parts! In the real world, there may not be perfect tests, so you may need to ask questions about exactly the desired behavior. However, here all you have to do is get the tests to pass in `debug.spec.js` as usual!
 
